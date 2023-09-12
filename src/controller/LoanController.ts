@@ -126,10 +126,6 @@ export const UpdateLoanDueDate = async(req: Request<{id_loan: string}, {}, {_id:
 
         let loan = await LoanClass.loanFind(id_loan);
 
-        // if(loan && loan.user.warning >= 3) {
-        //     return res.status(400).json({message: 'this user has many book not return in time.'});
-        // }
-
         let currentDateTime = new Date();
         // let date = currentDateTime.toISOString('en-US', { timeZone: 'Asia/Manila' });
         let date = new Date(currentDateTime.toLocaleDateString('en-US', { timeZone: 'Asia/Manila' }));
