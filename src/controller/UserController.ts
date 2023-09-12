@@ -65,7 +65,6 @@ export const checkEmailResetPass = async(req: Request<{},{},{email:string},{},{}
 
         return res.status(400).json({message: 'Request Failed Email Invalid. Try Again.'});
     } catch (error: any) {
-        console.log(error);
         return res.status(500).json({message: 'Reset Password request Failed. Server Error.', error_details:{...error}});
     }
 }
@@ -110,7 +109,6 @@ export const processResetPass = async(req: Request<{}, {}, {email: string, token
         
         return res.status(400).json({message: 'Request Failed Email Invalid. Try Again.'});
     } catch (error: any) {
-        console.log(error);
         return res.status(500).json({message: 'Reset Password request Failed. Server Error.', error_details:{...error}});
     }
 }
@@ -192,9 +190,7 @@ export const LoginUser = async (req: Request<{}, {}, {email: string, password: s
                 .json({message: 'Sign In Success.', user});
 
     } catch (error: any) {
-        // console.log(error);
         return res.status(500).json({message: 'Sign In Failed. Server Error.', error_details:{...error}});
-        // throw new Error('Sign In Failed. Server Error.');
     }
 }
 
@@ -221,10 +217,6 @@ export const dashBoardDatas = async (req: Request, res: Response) => {
     }
 }
 
-
-// export const autheticate = (req, res) => {
-
-// }
 
 export const SearchUsers = async (req: Request<{}, {}, {search:string}, {}, {}>, res: Response) => {
     try {
@@ -260,7 +252,6 @@ export const ListUsers = async (req: Request<{}, {}, {}, {page:string, fullname:
         let users = await UserClass.users(pageNumber, limit, searchInput);
         return res.status(200).json({message: 'User List Request Complete', users});
     } catch (error: any) {
-        console.log(error)
         return res.status(500).json({message: 'Server Error.', error_details: {...error}});
     }
 }
@@ -296,7 +287,6 @@ export const UpdatingProfileData = async (req: Request<{}, {}, {firstname: strin
         }
         return res.status(400).json({message: 'Profile Update Failed.Please Try Again'});
     } catch (error: any) {
-        console.log(error)
         return res.status(500).json({message: 'Profile Update Failed. Server Error.', error_details: {...error}});
     }
 }
@@ -318,7 +308,6 @@ export const UpdatingProfileVatar = async (req: Request<{}, {}, {avatar: string}
         let user = await UserClass.findByEmailUser(email);
         return res.status(200).json({message: 'Profile Update Avatar Complete', user});
     } catch (error: any) {
-        console.log(error)
         return res.status(500).json({message: 'Profile Update Failed. Server Error.', error_details: {...error}});
     }
 }
@@ -333,7 +322,6 @@ export const UpdatingWarning = async (req: Request<{id_user: string}, {}, {}, {}
         user = await UserClass.findByEmailUser(user.email);
         return res.status(200).json({message: 'User Warning Details Update Complete', user});
     } catch (error: any) {
-        console.log(error)
         return res.status(500).json({message: 'User Warning Details Failed. Server Error.', error_details: {...error}});
     }
 }
