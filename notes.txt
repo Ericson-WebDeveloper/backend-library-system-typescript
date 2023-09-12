@@ -1,0 +1,10 @@
+"dev": "nodemon ./src/server.ts",
+
+
+https://blog.logrocket.com/extend-express-request-object-typescript/
+
+https://plainenglish.io/blog/typed-express-request-and-response-with-typescript
+
+https://javascript.plainenglish.io/typed-express-request-and-response-with-typescript-7277aea028c
+
+https://dev.to/macmacky/get-better-with-typescript-using-express-3ik6

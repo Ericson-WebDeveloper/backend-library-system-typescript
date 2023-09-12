@@ -1,0 +1,17 @@
+https://www.google.com/search?q=node+express+typescript&oq=node+express+typescript&aqs=chrome..69i57j0i512l9.5354j0j7&sourceid=chrome&ie=UTF-8
+
+https://blog.logrocket.com/how-to-set-up-node-typescript-express/
+
+https://nodejs.dev/en/learn/nodejs-with-typescript/
+
+https://developer.okta.com/blog/2018/11/15/node-express-typescript
+
+https://hackernoon.com/how-to-setup-a-nodejs-app-with-express-and-typescript
+
+https://www.toptal.com/express-js/nodejs-typescript-rest-api-pt-1
+
+https://stackoverflow.com/questions/44764004/ts-node-is-not-recognized-as-an-internal-or-external-command-operable-program
+
+https://mongoosejs.com/docs/typescript.html
+
+https://stackoverflow.com/questions/50218878/typescript-express-error-function
