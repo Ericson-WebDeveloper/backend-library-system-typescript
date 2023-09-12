@@ -60,13 +60,6 @@ const phone = body('phone').escape()
 // const avatar = body('avatar').notEmpty().isImage();
 const avatar2 = check('avatar').custom((value, {req}) => {
         const extension = req.file.mimetype.split('/')[1];
-        // if(req.files.mimetype === 'application/pdf'){
-        //     return '.pdf'; // return "non-falsy" value to indicate valid data"
-        // }else{
-        //     return false; // return "falsy" value to indicate invalid data
-        // }
-
-        // const extension = (path.extname(filename)).toLowerCase();
         switch (extension) {
             case 'jpg':
                 return '.jpg';
