@@ -102,14 +102,6 @@ class BookClass {
                 {
                     $match: {
                         $or: final_condition
-                        // $and: final_condition -> August 16 2023
-                        // $or: [
-                        //     { title: searchInputs.title ? { $regex: `.*${searchInputs.title}.*`, $options:  'i' } : '' },
-                        //     { isbn: searchInputs.isbn ? {$regex: `.*${searchInputs.isbn}.*`, $options:  'i'} : ''},
-                        //     { author: searchInputs.author ? {$regex: `.*${searchInputs.author}.*`, $options:  'i'} : ''},
-                        //     // { status: searchInputs.status ? {$regex: `.*${searchInputs.status}`, $options:  'i'} : ''}
-                        //     { status: searchInputs.status != '' ? searchInputs.status : ''}
-                        // ]
                     }
                 }
             ]).sort("-_id")
@@ -153,9 +145,6 @@ class BookClass {
     }
 
     async books(pageNumber: number, limit: number, search: ISearchInputs | null = null) {
-        // https://javascript.works-hub.com/learn/how-to-create-a-paginated-api-with-mongodb-and-node-js-6e1e3
-        // https://codeforgeek.com/server-side-pagination-using-node-and-mongo/
-        // https://stackoverflow.com/questions/5539955/how-to-paginate-with-mongoose-in-node-js
         let result: {totalDatas: number, totalPage: number, previous: null|{ pageNumber: number|null, limit: number}, 
             next: { pageNumber: number, limit: number } | null, 
             currePage: number, rowsPerPage: number, data: BookModel[]} = {
@@ -191,12 +180,6 @@ class BookClass {
     
 
     async booksDashBoardAdmin() {
-        // https://stackoverflow.com/questions/52088666/multiple-counts-with-single-query-in-mongodb
-        // https://www.mongodb.com/docs/manual/reference/operator/aggregation/facet/
-        // https://www.mongodb.com/docs/manual/reference/operator/aggregation/arrayElemAt/
-        // https://www.mongodb.com/docs/manual/reference/operator/aggregation/count/
-        // https://www.mongodb.com/docs/v4.2/reference/operator/aggregation/count/
-        // https://www.codegrepper.com/code-examples/javascript/mongodb+match+array+not+empty+aggregation
         return await Book.aggregate([
             {
                 $facet: {
@@ -223,9 +206,6 @@ class BookClass {
                 // Book_UnAvailable: { "$arrayElemAt": ["$Book_UnAvailable.Total_Books_UnAvailable", 0] },
                 Book_UnAvailable: {
                     $cond: {
-                        /// https://www.mongodb.com/community/forums/t/improving-mongodb-queries-having-facet-stage/138353
-                        // https://stackoverflow.com/questions/62291161/combining-facet-results-and-formatting-output
-                        // https://medium.com/@aviksingha2017/a-different-approach-towards-mongodb-facet-eb65bbddd090
                         if:  {$gt: [ {$size: '$Book_UnAvailable'}, 0 ]}, 
                         then: { "$arrayElemAt": ["$Book_UnAvailable.Total_Books_UnAvailable", 0] },
                         else: 0 
