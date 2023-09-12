@@ -15,33 +15,6 @@ import { appServer } from './app';
 dotenv.config();
 const app = express();
 
-// app.use(express.json({limit: '50mb'}));
-// app.use(express.urlencoded({extended:false}));
-
-// const whitelist = ["http://localhost:3000"];
-// const corsAsync = (req: Request, callback: (params1:null, params2: cors.CorsOptions) => void ) => {
-//     let corsOptions = { origin: false };
-//     const origin = req.header('Origin');
-//     if (!origin || whitelist.indexOf(origin) !== -1) {
-//         corsOptions = { origin: true };
-//     }
-//     callback(null, { ...corsOptions, credentials: true, optionsSuccessStatus: 200});
-// }
-
-// app.use(cors(corsAsync));
-// app.use(cookieParser());
-
-// app.use('/api/library-system/backend', authRouter);
-// app.use('/api/library-system/backend/admin', userRouter);
-// app.use('/api/library-system/backend/admin/book', bookRouter);
-// app.use('/api/library-system/backend/loan', loanRouter);
-
-// app.get('/api/*', ApiRouteNotFound);
-// app.get('/*', ApiRouteNotFound);
-// app.use(errorHandler);
-
-// const server = http.createServer(app);
-
 
 const server = http.createServer(appServer(app));
 
