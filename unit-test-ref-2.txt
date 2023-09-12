@@ -1,5 +1,0 @@
-https://www.google.com/search?q=jest+expect+database+to+contain&sca_esv=557096316&ei=nnrbZOGrJPXMseMPhKC7uA0&oq=jest+expect+database&gs_lp=Egxnd3Mtd2l6LXNlcnAiFGplc3QgZXhwZWN0IGRhdGFiYXNlKgIIATIFECEYoAEyBRAhGKABSM9DULQdWM0rcAN4AZABAJgBcKAB3gaqAQM5LjG4AQPIAQD4AQHCAgoQABhHGNYEGLADwgIHEAAYigUYQ8ICBRAAGIAEwgIIEAAYigUYkQLCAgYQABgWGB7CAggQABiKBRiGA8ICBxAAGA0YgATCAgcQIRigARgKwgIEECEYFeIDBBgAIEGIBgGQBgg&sclient=gws-wiz-serp
-
-https://eloquentcode.com/expect-an-array-to-contain-an-object-in-jest
-
-https://dev.to/walrusai/testing-database-interactions-with-jest-519n
