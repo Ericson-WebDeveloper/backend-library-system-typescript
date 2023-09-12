@@ -11,18 +11,13 @@ import { LoadModel } from "../Types/Loan";
 
 export const sendEmailResetLink= async (reciever: string, sender: string, subject: string, user: Omit<UserModel, 'role'>, link: string) => {
   let transporter = nodemailer.createTransport({
-    // host: "smtp.mailtrap.io",
-    // port: 2525,
-    // auth: {
-    //   user: "ad331901838340",
-    //   pass: "2272b6d3cdeece"
-    // }
+
     host: 'smtp.gmail.com',
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: 'system0mail0app@gmail.com', // generated ethereal user
-        pass: "gqasubnzykufdwya" // generated ethereal password
+        user: '', // generated ethereal user
+        pass: "" // generated ethereal password
     }
   });
   try {
@@ -65,8 +60,8 @@ export const sendEmailLoanNotif = async (reciever: string, sender: string, subje
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: 'system0mail0app@gmail.com', // generated ethereal user
-        pass: "gqasubnzykufdwya" // generated ethereal password
+        user: '', // generated ethereal user
+        pass: "" // generated ethereal password
     }
   });
   try {
@@ -137,24 +132,17 @@ export const sendEmailLoanNotif = async (reciever: string, sender: string, subje
 }
 
 export const sendEmailRegister = async (reciever: string, sender: string, subject: string, user: Omit<UserModel, 'role'>, pass: string) => {
-    // Generate test SMTP service account from ethereal.email
-    // Only needed if you don't have a real mail account for testing
-    // let testAccount = await nodemailer.createTestAccount();
+
 
     // create reusable transporter object using the default SMTP transport
     var transporter = nodemailer.createTransport({
-      // host: "smtp.mailtrap.io",
-      // port: 2525,
-      // auth: {
-      //   user: "ad331901838340",
-      //   pass: "2272b6d3cdeece"
-      // }
+
       host: 'smtp.gmail.com',
       port: 587,
       secure: false, // true for 465, false for other ports
       auth: {
-          user: 'system0mail0app@gmail.com', // generated ethereal user
-          pass: "gqasubnzykufdwya" // generated ethereal password
+          user: '', // generated ethereal user
+          pass: "" // generated ethereal password
       }
     });
 
