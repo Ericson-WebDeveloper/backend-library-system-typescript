@@ -41,7 +41,6 @@ export const RegisterBookBorrowed = async (req: Request<{},{},{user: UserModel, 
         }
         return res.status(400).json({message: 'Create Borrowed Book Failed'});
     } catch (error: any) {
-        // console.log(error);
         return res.status(500).json({message: 'Create Borrowed Book Failed. Server Error.', error_details:{...error}});
     }
 }
@@ -62,7 +61,6 @@ export const LoansList = async(req: Request<{},{},{},{page:string, book: string|
         let response = await LoanClass.loans(pageNumber, limit, searchInput);
         return res.status(200).json({message: 'Loan List Request Success', loans: response });
     } catch (error: any) {
-        console.log(error);
         return res.status(500).json({message: 'Loan List Request Failed. Server Error.', error_details:{...error}});
     }
 } 
@@ -90,7 +88,6 @@ export const SendEmailNotifLoanReturn = async (req: Request<{id_loan:string},{},
         }
         return res.status(200).json({message: 'Email Send Success'});
     } catch (error: any) {
-       
         return res.status(500).json({message: 'Create Borrowed Book Failed. Server Error.', error_details:{...error}});
     }
 }
@@ -151,7 +148,6 @@ export const UpdateLoanDueDate = async(req: Request<{id_loan: string}, {}, {_id:
         } 
             return res.status(400).json({message: 'Loan Update Request Failed', loan: loanresponse }); 
     } catch (error: any) {
-        console.log(error)
         return res.status(500).json({message: 'Loan Update Failed. Server Error.', error_details:{...error}});
     }
 } 
@@ -184,7 +180,6 @@ export const LoanDashBoardDataUser = async(req: Request<{id_user:string}, {}, {}
         let loanscount = await LoanClass.UserDashboardDatas(id_user);
         return res.status(200).json({message: 'Loan Counts Request Success', loancount: loanscount[0] ?? null });
     } catch (error: any) {
-        // console.log(error)
         return res.status(500).json({message: 'Loan Counts Request Failed. Server Error.', error_details:{...error}});
     }
 }
