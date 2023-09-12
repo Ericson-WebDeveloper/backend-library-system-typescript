@@ -9,16 +9,8 @@ export const refreshAthorization = async (req: Request, res: Response, next: Nex
 
   if (!refresh_token) {
       return res.status(401).json({message: 'You are unanthenticated. No valid token'});
-    // res.status(401);
-    // throw new Error(`You are unanthenticated.`);
   } else {
     try {
-      // const {refresh_token} = req.cookies;
-
-      // if(!refresh_token) {
-      //     res.status(401);
-      //     throw new Error(`You are unanthenticated.`);
-      // }
 
       const publickey = fs.readFileSync(
         "./src/config/refreshtoken/public.pem",
@@ -54,9 +46,7 @@ export const refreshAthorization = async (req: Request, res: Response, next: Nex
       });
       return res.status(200).json({ message: "Token Refresh Success." });
     } catch (error: any) {
-      // console.log(error);
-      // res.status(401);
-      // throw new Error(`You are unanthenticated.`);
+
       return res.status(401).json({message: 'You are unanthenticated.'});
     }
   }
