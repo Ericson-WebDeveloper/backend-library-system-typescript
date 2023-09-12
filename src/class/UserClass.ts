@@ -24,8 +24,7 @@ class UserCLass {
         }
         let User_count = await this.userCount('User', searchInputs);
         // const totalDatas = await User.find({}).count();
-        // https://www.youtube.com/watch?v=ja4yIn2pCzw
-        // https://github.com/TomDoesTech/mongodb-react-pagination/blob/main/server/src/index.js
+
         let startIndex = (pageNumber - 1) * limit;
         const endIndex = (pageNumber + 1) * limit;
         result.totalDatas = User_count;
@@ -40,9 +39,6 @@ class UserCLass {
         let conditions = [];
         if(searchInputs && searchInputs.fullname != '') {
             conditions.push({ fullname: { $regex: `.*${searchInputs.fullname}.*`, $options:  'i' } });
-            // conditions.push({ firstname: { $regex: `.*${searchInputs.fullname}`, $options:  'i' } });
-            // conditions.push({ middlename: { $regex: `.*${searchInputs.fullname}`, $options:  'i' } });
-            // conditions.push({ lastname: { $regex: `.*${searchInputs.fullname}`, $options:  'i' } });
         }
 
         if(searchInputs && searchInputs.email != '') {
@@ -126,11 +122,7 @@ class UserCLass {
             {
                 $match: {
                     $or: [
-                        // { firstname: {$regex : `.*${search}`, $options:  'i'}},
-                        // { lastname: {$regex : `.*${search}`, $options:  'i'}},
-                        // { middlename: {$regex : `.*${search}`, $options:  'i'}},
                         { email: {$regex : `.*${search}`, $options:  'i'}},
-                        // { "role.name": type }
                     ],
                    $and: [ {"role.name": type} ]
                 }
@@ -174,11 +166,7 @@ class UserCLass {
                     //control the join data parameters where id == id
                     pipeline: [
                             {$match: {$expr: {$eq: ['_id', '_id']}}},
-                        //     {
-                        //         $match: {
-                        //             "role.name": type
-                        //     }
-                        // },  
+
                     ]
                     
                 }
@@ -266,19 +254,7 @@ class UserCLass {
     }
 
     async getAllUsers(type: string) {
-        // return await User.find().populate({path: 'role', match: { 'name': type }}).exec();
-        // let users = await User.find({}).populate({path: 'role'}).exec();
-        // //return await User.find({"role.name": {name: type}}).count();
-        // return users.map((user) => {
-        //     return user.role.map((rol) => {
-        //         if(rol.name == type) {
-        //             return user;
-        //         }
-        //     })
-        // });
 
-        // return await User.find('role': { "$ref" : 'role', "$name" : type , "$db" :'test' }).count();
-// https://mongoplayground.net/p/hGQFhkoujsC
         return await User.aggregate([
             {
                 $lookup: {
@@ -289,11 +265,6 @@ class UserCLass {
                     //control the join data parameters where id == id
                     pipeline: [
                         {$match: {$expr: {$eq: ['_id', '_id']}}},
-
-                        // additional where filter the pipeline
-                        // if the other table join have data equal
-                        // user + role
-                        // if role not match the role not populated returnning null
                         {
                             $match: {
                                 "name": type
